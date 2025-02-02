@@ -1,18 +1,55 @@
 .contact-container {
-    width: 100%;
-    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; /* Add vertical centering */
-    padding: 40px 20px;
+    padding: 40px;
+    border: solid 1px white;
+
+    
   }
   
   .contact-info {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 4rem;
     place-items: center; /* Center items in grid cells */
-    width: 100%;
-    max-width: 600px;
+    
+  }
+
+  .contact-item{
+    border: solid 2px white;
+    border-radius: 4px;
+
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 12px;
+
+    width: 15vw;
+    height: 10vh;
+
+    margin: 1px;
+
+    transition: transform 0.3s cubic-bezier(0.8, 0.9, 0.95, 1), 
+              box-shadow 0.3s ease;
+  will-change: transform; /* Optional: Optimizes animation performance */
+  }
+
+
+  .email-link {
+    color: #80ccff;
+    text-decoration: wavy;
+    transition: color 0.3s ease;
+  }
+  
+  .email-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+  .contact-item:hover{
+    transform: translateY(-8px); /* Increase lift amount */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
   }

@@ -1,13 +1,14 @@
 .container {
-  padding-top: 80px; /* Keep offset for fixed navbar */
-  min-height: 100vh;
-  display: flex; /* Add this */
-  flex-direction: column; /* Add this */
-  align-items: center; /* Add this to center children horizontally */
-}
 
+  min-height: 90vh; /* Use full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  padding: 10px;
+  border: dotted 2px white;
+  margin:  0px; /* Ensure horizontal centering */
+}
 .page-container {
-  width: 100%; /* Change from max-width to width */
-  padding: 20px;
-  flex-grow: 1; /* Add this to fill available space */
+  border: double 1px rgb(182, 0, 30);
 }

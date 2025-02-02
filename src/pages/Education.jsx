@@ -1,11 +1,44 @@
 export default function Education() {
-    return (
-      <div className="page-container">
-        <h1>Education</h1>
+  return (
+    <>
+    <h1>Education</h1>
         <div className="education-item">
-          <h3>Computer Science Degree</h3>
-          <p>University of Technology (2019-2023)</p>
+          <h3>Software Engineering</h3>
+          <p>University of Engineering</p>
+        </div>
+
+        <div className="contact-container">
+      <h1>Contact Me</h1>
+      <div className="contact-info">
+        <div className="contact-item">
+         
+          <div>
+            here
+          </div>
+        </div>
+
+        <div className="contact-item">
+          
+          <div>
+           here
+          </div>
+        </div>
+
+        <div className="contact-item">
+          
+          <div>
+            here
+          </div>
+        </div>
+
+        <div className="contact-item">
+          
+          <div>
+            here
+          </div>
         </div>
       </div>
-    );
-  }
+    </div>
+    </>
+  );
+}

@@ -1,13 +1,19 @@
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  /* Remove display: flex and place-items: center from here */
+:root {
+  /* Light theme */
+  --bg-primary: #ffffff;
+  --text-primary: #2c3e50;
+  --nav-bg: #f8f9fa;
+  
+  /* Dark theme */
+  &[data-theme='dark'] {
+    --bg-primary: #1a1a1a;
+    --text-primary: #ffffff;
+    --nav-bg: #2c3e50;
+  }
 }
 
-#root {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
