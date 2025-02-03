@@ -1,0 +1,68 @@
+
+.page-title{
+    margin-top: auto;
+    margin-left: 40px;
+}
+.education-item{
+    padding-left: 20px;
+    background: linear-gradient(180deg, #3496ff, #003055);
+    width: 50vw;
+    box-shadow: 4px 12px 10px rgb(1, 0, 27);
+    margin-left: 10vw;
+    border-radius: 5px;
+}
+
+.school-subject{
+    font-size: medium;
+}
+
+.aws-section{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4vw;
+    
+}
+
+.aws-inner-section{
+
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+.aws-inner-item{
+    display: flex;
+
+    justify-content: start;
+    align-items: center;
+
+    width: auto;
+    margin: 5px;
+    padding: 5px;
+    
+}
+.certification{
+    background: linear-gradient(180deg, #ffac11, #281b00);
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 30vw;
+    
+    box-shadow: 4px 12px 10px rgb(1, 0, 27);
+    border-radius: 3px;
+    padding: 20px;
+}
+
+.crt-desc{
+    font-size: x-large;
+}

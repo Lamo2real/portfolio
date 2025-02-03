@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navbar} style={{ backgroundColor: 'var(--nav-bg)' }}>
-      <div className={styles.logo}>My Portfolio</div>
+      <div className={styles.logo}>Ali Kouravand</div>
       <ul className={styles.navLinks}>
         <li><Link to="/" className={styles.link}>Home</Link></li>
         <li><Link to="/projects" className={styles.link}>Projects</Link></li>

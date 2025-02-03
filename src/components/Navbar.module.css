@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%;
+  padding: 0.25rem 5%;
   position: fixed;
   width: 90%;
   top: 0;
@@ -17,10 +17,10 @@
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  background: linear-gradient(45deg, #3498db, #9b59b6);
+  background: linear-gradient(180deg, #007bff, #006094);
   background-clip: text; /* Standard property */
   -webkit-background-clip: text; /* Vendor prefix for WebKit browsers */
   -webkit-text-fill-color: transparent;
@@ -84,7 +84,7 @@ li{
 
 
 /* Add media query for responsive design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .navLinks {
     gap: 1.5rem;
   }
@@ -92,4 +92,4 @@ li{
   .logo {
     font-size: 1.3rem;
   }
-}
+} */
