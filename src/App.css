@@ -1,6 +1,6 @@
 .container {
 
-  min-height: 90vh; /* Use full viewport height */
+  min-height:70vh; /* Use full viewport height */
   display: flex;
   flex-direction: column;
   justify-content: center; 
