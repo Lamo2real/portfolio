@@ -1,68 +1,67 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Light theme */
+  --bg-primary: #d8eeff;
+  --bg-primary-lower: rgb(55, 58, 60);
+  --text-primary: #000d1a;
+  --nav-bg: #3c4f62;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+[data-theme='dark'] {
+  /* Dark theme */
+  --bg-primary: #0066ec;
+  --text-primary: #f8ffff;
+  --nav-bg: #001224;
+  --bg-primary-lower: rgb(0, 22, 81);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Light theme background */
+body:not([data-theme='dark'])::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(155deg, var(--bg-primary) 20%, var(--bg-primary-lower) 80%);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Dark theme background */
+body[data-theme='dark']::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -10;
+  background-image: var(--bg-grid-dark);
+  background-size: 14px 24px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+body[data-theme='dark']::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10%;
+  height: 1000px;
+  width: 1000px;
+  border-radius: 50%;
+  z-index: -9;
+  background: var(--bg-radial-dark);
+  margin: 0 auto;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.certificate-image {
+  max-width: 7vw;
+  height: auto;
 }
+
+

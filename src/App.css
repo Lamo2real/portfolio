@@ -1,47 +1,26 @@
 .container {
-  padding-top: 80px; /* Offset for fixed navbar */
-  min-height: 100vh;
-}
 
-.page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.project-list {
-  display: grid;
-  gap: 20px;
-}
-
-.project-card {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.contact-form {
+  min-height: 90vh; /* Use full viewport height */
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
+  justify-content: center; 
+  /* align-items: center;  */
+  /* padding: 10px; */
+  margin:  0px; /* Ensure horizontal centering */
 }
 
-input, textarea {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.footer-logos{
+  max-width: 2vw;
 }
-
-button {
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+#linkedin-logo{
+  max-width: 1.5vw;
 }
-
-button:hover {
-  background-color: #2980b9;
+#linkedin-text{
+  padding-top: 8px;
+}
+.footer-div{
+  /* border: solid 1px red; */
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
 }
