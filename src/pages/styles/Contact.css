@@ -1,18 +1,16 @@
 .contact-container {
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; /* Add vertical centering */
     padding: 40px;
-    border: solid 1px white;
-
-    
+    text-shadow: 3px 3px 2px #6e6e6e;
+  
   }
   
   .contact-info {
     display: grid;
-
+    
     grid-template-columns: repeat(2, 1fr);
     gap: 4rem;
     place-items: center; /* Center items in grid cells */
@@ -20,35 +18,86 @@
   }
 
   .contact-item{
-    border: solid 2px white;
     border-radius: 4px;
-
+    background: linear-gradient(160deg, rgb(0, 76, 255), rgb(119, 189, 255));
     font-family: 'Courier New', Courier, monospace;
-    padding-left: 10px;
+
     padding-right: 10px;
     padding-bottom: 12px;
-    width: auto !important; /* Remove fixed width constraint */
-    height: auto !important;
+    width: 20vw;
+    height: 10vh;
     min-width: 200px; /* Set minimum width */
     padding: 20px; /* Increase padding */
-
-    transition: transform 0.3s cubic-bezier(0.8, 0.9, 0.95, 1), 
-              box-shadow 0.3s ease;
-  will-change: transform; /* Optional: Optimizes animation performance */
+    box-shadow: 2px 2px 5px black;
+    transition: transform 0.3s cubic-bezier(0.8, 0.9, 0.95, 1), box-shadow 0.3s ease;
+    will-change: transform; /* Optional: Optimizes animation performance */
   }
 
+  .contact-data{
+    font-size: 25px;
+    font-weight: 900;
+  }
+
+  #phone{
+    font-size: large;
+    font-weight: bolder;
+    color: #e3e3e3;
+  }
+
+  #phone:hover{
+    color: #000a11;
+  }
 
   .email-link {
-    color: #80ccff;
+    color: #e5e5e5;
     text-decoration: wavy;
     transition: color 0.3s ease;
+    font-size: 25px;
+    font-weight: 900;
+
   }
   
   .email-link:hover {
-    color: #2980b9;
+    color: #000001;
     text-decoration: underline;
   }
+
   .contact-item:hover{
     transform: translateY(-8px); /* Increase lift amount */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.9); /* Enhanced shadow for depth */
   }
+
+
+
+
+
+
+
+ /* Add to your existing CSS */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* If using React Router's main container */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 00vh;
+}
+
+.footer-div {
+  position: fixed; /* Fixes the footer to the viewport */
+  bottom: 0; /* Positions it at the bottom */
+  left: 0; /* Aligns it to the left edge */
+  right: 0; /* Aligns it to the right edge */
+  height: auto; /* Let the content determine the height */
+  background-color: #3636365a; /* Semi-transparent background */
+  color: white;
+  padding: 2rem; /* Adjust padding as needed */
+  backdrop-filter: blur(0px); /* Optional: For glassmorphism effect */
+  z-index: 100; /* Ensures it stays above other content */
+  text-align: center; /* Center-align text */
+}
+
+

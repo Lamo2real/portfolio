@@ -4,11 +4,11 @@ import './styles/Contact.css'; // Import the updated CSS
 export default function Contact() {
   return (
 
-      <div className="contact-container">
-      <h1>Contact Me</h1>
+    <div className="contact-container">
+      <h1>Contact Information</h1>
       <div className="contact-info">
         <div className="contact-item">
-         
+
           <div>
             <h3> <span className="icon">✉️</span> Email</h3>
             <a href='mailto:lamochi02@gmail.com' className='email-link'>lamochi02@gmail.com</a>
@@ -16,7 +16,7 @@ export default function Contact() {
         </div>
 
         <div className="contact-item">
-          
+
           <div>
             <h3><span className="icon">🔗</span> LinkedIn</h3>
             <a
@@ -31,21 +31,29 @@ export default function Contact() {
         </div>
 
         <div className="contact-item">
-          
+
           <div>
             <h3><span className="icon">📞</span> Phone</h3>
-            <p>+46 (072) 300-1573</p>
+            <div className='contact-data'>Call me on: <a id='phone' href="tel:+46723001573">+46 (072) 300-1573</a></div>
+
           </div>
         </div>
 
         <div className="contact-item">
-          
+
           <div>
             <h3><span className="icon">📍</span> Location</h3>
-            <p>Finspång, Sweden</p>
+            <p className='contact-data'>Finspång, Sweden.</p>
           </div>
         </div>
       </div>
+
+
+
+      
+
+
+
     </div>
 
   );

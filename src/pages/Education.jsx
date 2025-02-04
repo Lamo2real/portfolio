@@ -1,11 +1,19 @@
 
 import saa from '../assets/saa_certificate.png'
 import clf from '../assets/cloud_practitioner.png'
+import cpp from '../assets/cpp-logo.png'
+import py from '../assets/python-logo.png'
+import swift from '../assets/swift-logo.png'
+import android from '../assets/android-logo.png'
+import aws from '../assets/aws-logo.png'
 
 export default function Education() {
   return (
     <>
-      <h1 className='page-title'>Education</h1>
+      <section id='edu-cert'>
+        <h1 className='page-title'>Education</h1>
+        <h1>AWS Certifications</h1>
+      </section>
 
 
       <div className="aws-section">
@@ -30,6 +38,13 @@ export default function Education() {
                     <li className='school-subject'>DevOps Practices/Automated CI/CD pipelines using GitHub Actions.</li>
 
                   </ul>
+                  <section className='logo-container'>
+                  <img className='logos' src={cpp} />
+                  <img className='logos' src={py} />
+                  <img className='logos' src={swift} />
+                  <img className='logos' src={android} />
+                  <img className='logos' src={aws} />
+                  </section>
 
                 </section>
                 Capstone Project: FlexiCharge
@@ -54,6 +69,7 @@ export default function Education() {
         </div>
 
         <div className="aws-inner-section">
+
           <div className="aws-inner-item">
 
             <div className="certification">
@@ -79,9 +95,11 @@ export default function Education() {
             </div>
           </div>
 
+
           <div className="aws-inner-item">
 
             <div className="certification">
+
 
               <img
                 src={saa}
@@ -99,13 +117,21 @@ export default function Education() {
                       className="copy-button"
                       onClick={() => navigator.clipboard.writeText('4a5b9927dec6436abdeab7ea8634b7d7')}
                     >
-                       Copy Code
+                      Copy Code
                     </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <a href="https://cp.certmetrics.com/amazon/en/public/verify/credential"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button">
+            Click here!
+          </a>
+          <p id='verify-code-desc'>Copy the Validation Number and verify by clicking the button</p>
+
         </div>
       </div>
     </>

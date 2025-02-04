@@ -1,16 +1,18 @@
 :root {
   /* Light theme */
-  --bg-primary: #b9d4f5;
+  --bg-primary: #d8eeff;
+  --bg-primary-lower: rgb(98, 104, 111);
   --text-primary: #000d1a;
-  --nav-bg: #78bbff;
+  --nav-bg: #3c4f62;
   font-family: 'Courier New', Courier, monospace;
 }
 
 [data-theme='dark'] {
   /* Dark theme */
-  --bg-primary: #1a1a1a;
+  --bg-primary: #0066ec;
   --text-primary: #f8ffff;
-  --nav-bg: #003162;
+  --nav-bg: #00509f;
+  --bg-primary-lower: rgb(0, 22, 81);
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -27,7 +29,7 @@ body:not([data-theme='dark'])::before {
   z-index: -10;
   height: 100%;
   width: 100%;
-  background: var(--bg-gradient-light);
+  background: linear-gradient(135deg, var(--bg-primary) 20%, var(--bg-primary-lower) 80%);
 }
 
 /* Dark theme background */
