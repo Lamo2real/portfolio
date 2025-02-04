@@ -25,16 +25,17 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* <!-- Project 3: FlexiCharge --> */}
-        <div class="project">
+        
+      </div>
+
+      {/* <!-- Project 3: FlexiCharge --> */}
+      <div class="project">
           <h3>School-Project: FlexiCharge – Infrastructure – Back End</h3>
           <p><strong>Location:</strong> Sweden, Jönköping</p>
           <p>
             I developed and configured the <strong>AWS Cloud Infrastructure</strong> for Knowit’s FlexiCharge project, which supports real-time vehicle charging operations. Using <strong>Infrastructure as Code (IaC)</strong> with <strong>Terraform</strong>, I ensured that all necessary resources were provisioned and securely connected, with a safe and efficient networking setup to support seamless functionality.
           </p>
         </div>
-      </div>
-
 
     </div>
   );
