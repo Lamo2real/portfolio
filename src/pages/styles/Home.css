@@ -16,26 +16,38 @@
 #upper {
     display: flex;
     flex-direction: row;
-    justify-content: start;
-    border: dotted 2px rgb(247, 0, 255);
+    justify-content: space-between;
+    padding-left: 150px;
+    /* border: dotted 2px rgb(247, 0, 255); */
 }
+#lamo-at-desc {
+    width: 21vw;
+
+    /* padding-right: 10px; */
+    border-radius: 10px;
+    box-shadow: 8px 16px 12px rgba(0, 0, 0, 0.33);
+    filter: grayscale(0%);
+    border: double 12px rgb(167, 180, 194);
+}
+
 
 #middle {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: dotted 2px rgb(247, 0, 255);
+    /* border: dotted 2px rgb(247, 0, 255); */
 }
 
 #lower {
     display: flex;
     flex-direction: row;
     justify-content: end;
-    border: dotted 2px rgb(247, 0, 255);
+    padding-right: 150px;
+    /* border: dotted 2px rgb(247, 0, 255); */
 }
 
 .front-page-info {
-    /* border: solid 2px red; */
+    border: solid 4px rgb(167, 180, 194);
     background: linear-gradient(165deg, rgb(0, 76, 255), rgb(119, 189, 255));
     border-radius: 10px;
     box-shadow: 4px 6px 10px rgb(1, 0, 27);

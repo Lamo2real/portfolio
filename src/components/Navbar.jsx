@@ -3,13 +3,15 @@ import { FiSun, FiMoon } from "react-icons/fi";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext.jsx";
 import styles from './Navbar.module.css';
+import kakashi from '../assets/kakashi.png'
+
 
 const Navbar = () => {
   const { isDark, toggleTheme } = useContext(ThemeContext);
 
   return (
     <nav className={styles.navbar} style={{ backgroundColor: 'var(--nav-bg)' }}>
-      <div className={styles.logo}>Ali Kouravand</div>
+      <div className={styles.logo}><img id="kakashi" src={kakashi} alt="kakashi logo" width="90"/>Ali Kouravand (Lámo)</div>
       <ul className={styles.navLinks}>
         <li><Link to="/" className={styles.link}>Home</Link></li>
         <li><Link to="/projects" className={styles.link}>Projects</Link></li>

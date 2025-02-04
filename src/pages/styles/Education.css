@@ -7,6 +7,7 @@
     justify-content: center;
     gap: 45vw;
     font-size: x-large;
+    padding-top: 60px;
 }
 
 .social-links{
@@ -23,6 +24,8 @@
 .social-media-links{
     color: rgb(232, 233, 255);
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 .social-media-links:hover{
     color: rgb(162, 167, 255);
@@ -39,10 +42,11 @@
     padding: 3px;
     padding-left: 20px;
     background: linear-gradient(165deg, rgb(0, 76, 255), rgb(119, 189, 255));
-    width: 40vw;
+    width: 50vw;
     box-shadow: 4px 12px 10px rgb(1, 0, 27);
     margin-left: 10vw;
-    border-radius: 5px;
+    border-radius: 10px;
+    height: auto;
 }
 
 .logo-container{
@@ -53,8 +57,8 @@
 }
 
 .logos{
-    max-width: 60px;
-    padding: 10px;
+    max-width: 40px;
+    padding-bottom: 10px;
 }
 
 
@@ -144,7 +148,7 @@
     width: 30vw;
     
     box-shadow: 4px 6px 10px rgb(1, 0, 27);
-    border-radius: 3px;
+    border-radius: 10px;
     padding: 20px;
     transition: transform 0.3s cubic-bezier(0.8, 0.9, 0.95, 1), 
               box-shadow 0.3s ease;
@@ -173,4 +177,8 @@
 .copy-button:hover{
     cursor: pointer;
     background: linear-gradient(180deg, rgb(170, 170, 170), #393939);
+}
+
+.full-desc{
+    font-weight: 100
 }

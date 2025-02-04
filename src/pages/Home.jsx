@@ -1,9 +1,12 @@
+
+import lamo_at_desc from '../assets/lamo-at-desc.jpg'
+
 export default function Home() {
   return (
     <div className="page-container">
       <div id="hello">
-        <h1 className='page-title'>Welcome to My Portfolio</h1>
-        <h2>Hello!/こんにちは!</h2>
+        <h1 className='page-title'>Hello!/こんにちは!</h1>
+        hope your are doing well 🍵
       </div>
 
       <section className="all-front-page-info">
@@ -16,8 +19,9 @@ export default function Home() {
               empowering businesses to make smarter decisions.
             </div>
           </h3>
+          <img id='lamo-at-desc' src={lamo_at_desc}/>
         </section>
-
+        
         <section id="middle">
           <h3 className="front-page-info">
             <div className="personal-info-desc">

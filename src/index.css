@@ -59,8 +59,9 @@ body[data-theme='dark']::after {
   margin: 0 auto;
 }
 
-img {
+.certificate-image {
   max-width: 7vw;
   height: auto;
 }
+
 

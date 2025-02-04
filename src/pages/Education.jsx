@@ -12,7 +12,6 @@ export default function Education() {
     <>
       <section id='edu-cert'>
         <h1 className='page-title'>Education</h1>
-        <h1>AWS Certifications</h1>
       </section>
 
 
@@ -47,10 +46,12 @@ export default function Education() {
                   </section>
 
                 </section>
-                Capstone Project: FlexiCharge
-                As part of a large-scale team project, I contributed to FlexiCharge, a solution designed to locate available charging stations for electric vehicles.
-                This project was conducted in collaboration with Knowit, a leading Swedish IT consultancy.
+                Capstone Project: FlexiCharge <br />
+                <p className='full-desc'>As part of a large-scale team project, I contributed to FlexiCharge, a solution designed to locate available charging stations for electric vehicles.
+                This project was conducted in collaboration with Knowit, a leading Swedish IT consultancy.</p>
+                <br />
                 Team Structure: <br />
+                <p className='full-desc'>
                 The project involved 80 students divided into specialized teams, including Android, iOS, Cross-Platform, Web Development, Database, OCPP (Open Charge Point Protocol), Business Orchestrator, Charging System (hardware deployment), HTTP Communication, and AWS.
                 My Role: I served as the Solutions Architect, responsible for designing and implementing the cloud infrastructure on AWS.
                 Designed the solution architecture based on business requirements and KPIs.
@@ -62,6 +63,7 @@ export default function Education() {
                 Ensured operational excellence, adhering to the AWS Well-Architected Framework.
                 Collaborated with the HTTP Communication team to facilitate seamless integration between all sub-teams.
                 This experience not only honed my technical skills but also strengthened my ability to lead cross-functional teams, manage complex projects, and deliver scalable solutions in a collaborative environment.
+                </p>
               </p>
             </div>
 
@@ -69,11 +71,12 @@ export default function Education() {
         </div>
 
         <div className="aws-inner-section">
-
+        <h1>AWS Certifications</h1>
           <div className="aws-inner-item">
-
+            
             <div className="certification">
               <img
+                className='certificate-image'
                 src={clf}
                 alt="cloud practitioner Certificate"
 
@@ -102,6 +105,7 @@ export default function Education() {
 
 
               <img
+              className='certificate-image'
                 src={saa}
                 alt="AWS Solutions Architect Associate Certificate"
 

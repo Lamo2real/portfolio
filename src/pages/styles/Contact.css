@@ -91,7 +91,7 @@ html, body, #root {
   height: auto; /* Let the content determine the height */
   background-color: rgba(54, 54, 54, 0.353); /* Semi-transparent background */
   color: white;
-  padding: 2rem; /* Adjust padding as needed */
+  padding: 1rem; /* Adjust padding as needed */
   backdrop-filter: blur(0px); /* Optional: For glassmorphism effect */
   z-index: 100; /* Ensures it stays above other content */
   text-align: center; /* Center-align text */
