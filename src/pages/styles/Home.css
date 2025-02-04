@@ -1,0 +1,63 @@
+.all-front-page-info {
+    /* border: solid 2px greenyellow; */
+    padding: 0px;
+    width: 90%;
+}
+
+#hello {
+    height: 20vh;
+    display: flex;
+    /* border: solid 2px greenyellow; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#upper {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    border: dotted 2px rgb(247, 0, 255);
+}
+
+#middle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: dotted 2px rgb(247, 0, 255);
+}
+
+#lower {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    border: dotted 2px rgb(247, 0, 255);
+}
+
+.front-page-info {
+    /* border: solid 2px red; */
+    background: linear-gradient(165deg, rgb(0, 76, 255), rgb(119, 189, 255));
+    border-radius: 10px;
+    box-shadow: 4px 6px 10px rgb(1, 0, 27);
+    max-width: 30vw;
+    height: 15vh;
+    padding: 20px;
+    transition: transform 0.3s cubic-bezier(0.8, 0.9, 0.95, 1), box-shadow 0.3s ease;
+    will-change: transform;
+    display: flex; /* Add this */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center; /* Ensure text is centered */
+}
+
+.front-page-info:hover {
+    transform: translateY(-8px); /* Increase lift amount */
+    box-shadow: 6px 15px 10px rgba(0, 0, 0, 0.9);
+}
+
+.personal-info-desc {
+    display: flex; /* Add this */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center; /* Ensure text is centered */
+}

@@ -5,7 +5,7 @@ export default function Contact() {
   return (
 
     <div className="contact-container">
-      <h1>Contact Information</h1>
+      <h1 className='page-title'>Contact Information</h1>
       <div className="contact-info">
         <div className="contact-item">
 

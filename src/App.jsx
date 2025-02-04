@@ -9,6 +9,7 @@ import './App.css';
 import './pages/styles/Contact.css'
 import './pages/styles/Education.css'
 import './pages/styles/Projects.css'
+import './pages/styles/Home.css'
 
 function App() {
   return (
