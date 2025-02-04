@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import './App.css';
 import './pages/styles/Contact.css'
 import './pages/styles/Education.css'
+import './pages/styles/Projects.css'
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       </div>
       <div><div className="footer-div">
         <div className="footer-content">
-          <p>© {new Date().getFullYear()} Ali Kouravand.</p>
+          <p>©{new Date().getFullYear()} Ali Kouravand.</p>
           <div className="social-links">
             <div className="social-link">
               <a className="social-media-links" href="https://github.com/Lamo2real" target="_blank" rel="noopener noreferrer">

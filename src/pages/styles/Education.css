@@ -140,7 +140,7 @@
     align-items: center;
     width: 30vw;
     
-    box-shadow: 4px 12px 10px rgb(1, 0, 27);
+    box-shadow: 4px 6px 10px rgb(1, 0, 27);
     border-radius: 3px;
     padding: 20px;
     transition: transform 0.3s cubic-bezier(0.8, 0.9, 0.95, 1), 
@@ -149,6 +149,7 @@
 }
 .certification:hover{
     transform: translateY(-8px); /* Increase lift amount */
+    box-shadow: 4px 12px 10px rgb(1, 0, 27);
 }
 
 .crt-desc{

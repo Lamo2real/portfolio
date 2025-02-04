@@ -1,7 +1,7 @@
 :root {
   /* Light theme */
   --bg-primary: #d8eeff;
-  --bg-primary-lower: rgb(98, 104, 111);
+  --bg-primary-lower: rgb(55, 58, 60);
   --text-primary: #000d1a;
   --nav-bg: #3c4f62;
   font-family: 'Courier New', Courier, monospace;
@@ -29,7 +29,7 @@ body:not([data-theme='dark'])::before {
   z-index: -10;
   height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, var(--bg-primary) 20%, var(--bg-primary-lower) 80%);
+  background: linear-gradient(155deg, var(--bg-primary) 20%, var(--bg-primary-lower) 80%);
 }
 
 /* Dark theme background */

@@ -92,7 +92,7 @@ html, body, #root {
   left: 0; /* Aligns it to the left edge */
   right: 0; /* Aligns it to the right edge */
   height: auto; /* Let the content determine the height */
-  background-color: #3636365a; /* Semi-transparent background */
+  background-color: rgba(54, 54, 54, 0.353); /* Semi-transparent background */
   color: white;
   padding: 2rem; /* Adjust padding as needed */
   backdrop-filter: blur(0px); /* Optional: For glassmorphism effect */

@@ -1,0 +1,27 @@
+
+
+.projects-container{
+    border: dotted 2px rgb(9, 255, 0);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.project{
+    font-size: larger;
+    font-weight: bold;
+    border: dotted 2px rgb(225, 255, 0);
+    max-width: 25vw;
+    padding: 20px;
+    border-radius: 15px;
+    transition: transform 0.3s cubic-bezier(0.8, 0.9, 0.95, 1), box-shadow 0.3s ease;
+    will-change: transform;
+    background: linear-gradient(180deg, rgb(0, 76, 255), rgb(119, 189, 255));
+    box-shadow: 4px 6px 10px rgb(1, 0, 27);
+}
+.project:hover{
+    transform: translateY(-8px);
+    box-shadow: 4px 12px 10px rgb(1, 0, 27);
+}
+
+
