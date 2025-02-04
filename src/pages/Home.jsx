@@ -11,7 +11,7 @@ export default function Home() {
         <section id="upper">
           <h3 className="front-page-info">
             <div className="personal-info-desc">
-              I'm a <strong>Data Engineer</strong> on a mission to become a <strong>Solutions Architect</strong>.
+              I'm a Data Engineer on a mission to become a Solutions Architect.
               I design and build scalable data systems that transform raw data into actionable insights,
               empowering businesses to make smarter decisions.
             </div>

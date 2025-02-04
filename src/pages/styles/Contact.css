@@ -66,12 +66,9 @@
     transform: translateY(-8px); /* Increase lift amount */
     box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.9); /* Enhanced shadow for depth */
   }
-
-
-
-
-
-
+  .icon{
+    font-size: xx-large;
+  }
 
  /* Add to your existing CSS */
 html, body, #root {
