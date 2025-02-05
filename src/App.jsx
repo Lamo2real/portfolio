@@ -14,7 +14,7 @@ import './pages/styles/Home.css'
 import github from './assets/github-logo.png'
 import linkedin from './assets/linkedin.png'
 import mail from './assets/mail-logo.png'
-import tobi from './assets/tobi.png'
+// import tobi from './assets/tobi.png'
 
 function App() {
   return (
@@ -54,7 +54,7 @@ function App() {
           </div>
         </div>
 
-        <img src={tobi} width="60"/>
+        {/* <img src={tobi} width="60"/> */}
 
       </div>
       </div>

@@ -22,7 +22,7 @@
 }
 #lamo-at-desc {
     width: 21vw;
-
+    opacity: 100%;
     /* padding-right: 10px; */
     border-radius: 10px;
     box-shadow: 8px 16px 12px rgba(0, 0, 0, 0.33);
@@ -47,13 +47,14 @@
 }
 
 .front-page-info {
-    border: solid 4px rgb(167, 180, 194);
+    /* border: solid 4px rgb(167, 180, 194); */
     background: linear-gradient(165deg, rgb(0, 76, 255), rgb(119, 189, 255));
     border-radius: 10px;
     box-shadow: 4px 6px 10px rgb(1, 0, 27);
     max-width: 30vw;
     height: 15vh;
-    padding: 20px;
+    padding: 5px;
+    padding-right: 30px;
     transition: transform 0.3s cubic-bezier(0.8, 0.9, 0.95, 1), box-shadow 0.3s ease;
     will-change: transform;
     display: flex; /* Add this */
@@ -68,8 +69,12 @@
 }
 
 .personal-info-desc {
+    /* border: solid 1px red; */
     display: flex; /* Add this */
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
     text-align: center; /* Ensure text is centered */
+}
+#analytics-logo{
+    padding-left: 5px;
 }
