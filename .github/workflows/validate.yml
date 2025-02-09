@@ -1,0 +1,38 @@
+
+
+name: Terraform validation CI
+
+
+on:
+    push:
+        branches:
+            - infra_dev
+    pull_request:
+      branches:
+        - infra_dev
+
+jobs: 
+    terraform:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: aws_infra
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: setup terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                terraform_version: 1.9.5
+
+            - name: Terraform formating
+              run: terraform fmt 
+
+              #very similar to linting in py
+            - name: validate tf syntax
+              run: terraform validate
+
+            - name: check the infra in json format
+              run: terraform plan -out=tfplan
