@@ -49,13 +49,15 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
-
-
-      
-
-
-
+      <div className="download-section">
+        <a 
+          href="/resume.pdf" // Update this path to your actual resume file
+          className="download-button"
+          download="Ali_Kouravand_Resume.pdf"
+        >
+          Download Resume
+        </a>
+      </div>
     </div>
 
   );

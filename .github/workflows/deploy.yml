@@ -1,0 +1,64 @@
+
+name: serverless deployment of static content to S3 and AWS infra
+
+on:
+    pull_request:
+        types:
+            - closed
+        branches:
+            - main
+
+jobs:
+    terraform-apply:
+        if: github.event.pull_request.merged == true
+        runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: aws_infra
+        steps: 
+          - name: github checkout code
+            uses: actions/checkout@v4
+
+          - name: Configure AWS creds
+            uses: aws-actions/configure-aws-credentials@v3 #store the aws credentials in a temporary manner (BP security)
+            with:
+                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                aws-region: ${{ secrets.AWS_REGION }}
+
+          - name: Setup terraform
+            uses: hashicorp/setup-terraform@v3
+            with: 
+                terraform_version: 1.9.5
+
+          - name: initialize the terraform changes
+            run: terraform init
+
+          - name: apply the changes of the infra
+            run: terraform apply -auto-approve
+
+
+    deploy-static-content:
+        if: github.event.pull_request.merged == true
+        needs: terraform-apply
+        runs-on: ubuntu-latest
+
+        steps:
+          
+          - name: Checkout Code
+            uses: actions/checkout@v4
+            
+          - name: setup node runner on github
+            uses: actions/setup-node@v4
+            with:
+                node-version: 20
+            
+          - name: install dependencies
+            run: npm install
+
+          - name: build project 
+            run: npm run build
+
+            # upload static content from the dist folder to S3 bucket
+          - name: upload dist folder to S3
+            run: aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete
