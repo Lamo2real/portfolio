@@ -3,7 +3,7 @@
 resource "aws_cloudfront_origin_access_control" "www_lamodata_com_cf_oac" {
   name = "lamodata_cloudfront_s3_oac"
   origin_access_control_origin_type = "s3"
-  signing_behavior = "never"
+  signing_behavior = "never" #try "always" if this doesnt work
   signing_protocol = "sigv4"
 }
 
@@ -24,18 +24,18 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
   is_ipv6_enabled = true
   default_root_object = "index.html"
 
-  logging_config {
-    include_cookies = false
-    bucket          = "${var.logging_bucket}.s3.amazonaws.com"
-    prefix          = "logs/recent-logs/"
-  }
+#   logging_config {
+#     include_cookies = false
+#     bucket          = "${var.logging_bucket}.s3.amazonaws.com"
+#     prefix          = "logs/recent-logs/"
+#   }
   
 
-  aliases = ["mysite.example.com", "yoursite.example.com"]
+  aliases = ["${var.my_subdomain}.${var.domain_name}", "${var.domain_name}"]
 
   default_cache_behavior {
-    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
-    cached_methods   = ["GET", "HEAD"]
+    allowed_methods  = [ "GET", "HEAD" ]
+    cached_methods   = [ "GET", "HEAD" ]
     target_origin_id = local.s3_origin_id
 
     forwarded_values {
@@ -46,7 +46,7 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
       }
     }
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
@@ -54,9 +54,9 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
 
   # Cache behavior with precedence 0
   ordered_cache_behavior {
-    path_pattern     = "/content/immutable/*"
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    path_pattern     = "/dist/*"
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
     target_origin_id = local.s3_origin_id
 
     forwarded_values {
@@ -75,43 +75,19 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
     viewer_protocol_policy = "redirect-to-https"
   }
 
-  # Cache behavior with precedence 1
-  ordered_cache_behavior {
-    path_pattern     = "/content/*"
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3_origin_id
-
-    forwarded_values {
-      query_string = false
-
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
-    compress               = true
-    viewer_protocol_policy = "redirect-to-https"
-  }
-
   price_class = "PriceClass_200"
 
   restrictions {
     geo_restriction {
-      restriction_type = "whitelist"
-      locations        = ["US", "CA", "GB", "DE"]
+      restriction_type = "none"
+      locations        = []
     }
   }
 
-  tags = {
-    Environment = "production"
-  }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    minimum_protocol_version = "TLSv1.2_2021"
+    ssl_support_method = "sni-only"
     acm_certificate_arn = aws_acm_certificate.tls_certificate.arn
   }
 }
