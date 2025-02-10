@@ -3,14 +3,11 @@ name: serverless deployment of static content to S3 and AWS infra
 
 on:
     pull_request:
-        types:
-            - closed
         branches:
             - main
 
 jobs:
     terraform-apply:
-        if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         defaults:
           run:
@@ -19,7 +16,7 @@ jobs:
           - name: github checkout code
             uses: actions/checkout@v4
 
-          - name: Configure AWS creds
+          - name: Configure AWS credentials
             uses: aws-actions/configure-aws-credentials@v3 #store the aws credentials in a temporary manner (BP security)
             with:
                 aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
@@ -35,12 +32,11 @@ jobs:
             run: terraform init
 
           - name: apply the changes of the infra
-            run: terraform apply -auto-approve
+            run: terraform apply -auto-approve #HRER
 
 
     deploy-static-content:
-        if: github.event.pull_request.merged == true
-        needs: terraform-apply
+        needs: terraform-apply #HERE
         runs-on: ubuntu-latest
 
         steps:
