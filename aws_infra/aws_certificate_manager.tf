@@ -2,8 +2,8 @@
 
 
 resource "aws_acm_certificate" "tls_certificate" {
-  provider = aws.us_east_1
-  domain_name = var.domain_name
+  provider          = aws.us_east_1
+  domain_name       = var.domain_name
   validation_method = "DNS"
 
   subject_alternative_names = ["*.${var.domain_name}", "${var.domain_name}"]
@@ -26,16 +26,16 @@ resource "aws_route53_record" "validation_records" {
     }
   }
 
-  zone_id = data.aws_route53_zone.hosted_zone.zone_id
-  name    = each.value.name
-  type    = each.value.type
-  records = [each.value.record]
-  ttl     = 60
+  zone_id         = data.aws_route53_zone.hosted_zone.zone_id
+  name            = each.value.name
+  type            = each.value.type
+  records         = [each.value.record]
+  ttl             = 60
   allow_overwrite = true
 }
 
 resource "aws_acm_certificate_validation" "validation" {
-  provider = aws.us_east_1
+  provider                = aws.us_east_1
   certificate_arn         = aws_acm_certificate.tls_certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.validation_records : record.fqdn]
 }
