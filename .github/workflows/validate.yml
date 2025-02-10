@@ -26,6 +26,9 @@ jobs:
               uses: hashicorp/setup-terraform@v3
               with:
                 terraform_version: 1.9.5
+                
+            - name: terraform init to install required provider (hashicorp/aws)
+              run: terraform init
 
             - name: Terraform formating
               run: terraform fmt 
