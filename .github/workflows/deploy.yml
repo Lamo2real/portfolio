@@ -31,12 +31,12 @@ jobs:
           - name: initialize the terraform changes
             run: terraform init
 
-          - name: apply the changes of the infra
-            run: terraform apply -auto-approve #HRER
+          - name: Terraform plan
+            run: terraform plan -out=tfplan 
 
 
     deploy-static-content:
-        needs: terraform-apply #HERE
+        needs: terraform-apply
         runs-on: ubuntu-latest
 
         steps:
@@ -57,4 +57,4 @@ jobs:
 
             # upload static content from the dist folder to S3 bucket
           - name: upload dist folder to S3
-            run: aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete
+            run: aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete 
