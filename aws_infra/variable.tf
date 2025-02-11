@@ -18,3 +18,9 @@ variable "my_subdomain" {
 #   type = string
 # }
 
+
+#this is not leveraged due to SSM Parameter Store beiing more secure and scalable
+# variable "aws_account_id" {
+#   type = string
+#   description = "The AWS Account ID where the IAM user 'itachi' resides."
+# }

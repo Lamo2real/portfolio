@@ -54,7 +54,7 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
 
   # Cache behavior with precedence 0
   ordered_cache_behavior {
-    path_pattern     = "/dist/*"
+    path_pattern     = "/assets/*"
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = local.s3_origin_id

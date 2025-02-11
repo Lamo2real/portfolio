@@ -35,10 +35,10 @@ resource "aws_s3_bucket_ownership_controls" "www_lamodata_com_owner" {
 resource "aws_s3_bucket_public_access_block" "www_lamodata_com_pab" {
   bucket = aws_s3_bucket.www_lamodata_com.id
 
-  block_public_acls       = true
+  block_public_acls       = false
   block_public_policy     = false
-  ignore_public_acls      = true
-  restrict_public_buckets = true
+  ignore_public_acls      = false
+  restrict_public_buckets = false
 }
 
 resource "aws_s3_bucket_acl" "www_lamodata_com_acl" {
@@ -67,11 +67,12 @@ resource "aws_s3_bucket_versioning" "www_lamodata_com_versioning" {
     status = "Enabled"
   }
 }
+data "aws_ssm_parameter" "aws_account_id" {
+  name = "/serverless-portfolio/aws_account_id"
+}
 
 resource "aws_s3_bucket_policy" "allow_cloudfront_policy" {
   bucket = aws_s3_bucket.www_lamodata_com.id
-
-
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -91,19 +92,33 @@ resource "aws_s3_bucket_policy" "allow_cloudfront_policy" {
         }
       },
       {
+        Sid    = "AllowFullAccessToTheBucket"
+        Effect = "Allow"
+        Principal = {
+          AWS = "${data.aws_ssm_parameter.aws_account_id.value}"
+        }
+        Action = "s3:*"
+        Resource = [
+          "${aws_s3_bucket.www_lamodata_com.arn}/*",
+          "${aws_s3_bucket.www_lamodata_com.arn}"
+        ]
+      },
+      {
         Sid       = "DenyAllExceptCloudFront"
         Effect    = "Deny"
         Principal = "*"
         Action    = "s3:*"
-        Resource  = "${aws_s3_bucket.www_lamodata_com.arn}/*"
+        Resource = [
+          "${aws_s3_bucket.www_lamodata_com.arn}/*",
+          "${aws_s3_bucket.www_lamodata_com.arn}"
+        ]
         Condition = {
           StringNotEquals = {
-            "AWS:SourceArn" = "${aws_cloudfront_distribution.lamodata_cloudfront_dist.arn}"
+            "AWS:SourceArn"    = "${aws_cloudfront_distribution.lamodata_cloudfront_dist.arn}",
+            "aws:PrincipalArn" = "${data.aws_ssm_parameter.aws_account_id.value}"
           }
         }
       }
     ]
-
   })
-
 }
