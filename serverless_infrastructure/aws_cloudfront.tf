@@ -3,18 +3,18 @@ locals {
   s3_origin_id = "myS3Origin"
 }
 
-# resource "aws_cloudfront_origin_access_control" "oac" {
-#   name = "my_oac"
-#   description = "restrict s3 access to cloudfront"
-#   origin_access_control_origin_type = "s3"
-#   signing_behavior = "never"
-#   signing_protocol = "sigv4"
-# }
+resource "aws_cloudfront_origin_access_control" "oac" {
+  name = "my_oac"
+  description = "restrict s3 access to cloudfront"
+  origin_access_control_origin_type = "s3"
+  signing_behavior = "always"
+  signing_protocol = "sigv4"
+}
 
 resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
   origin {
     domain_name              = aws_s3_bucket.redirect_bucket.bucket_regional_domain_name
-    # origin_access_control_id = aws_cloudfront_origin_access_control.
+    origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
     origin_id                = local.s3_origin_id
   }
 
@@ -44,6 +44,7 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
   }
 
 
+
   price_class = "PriceClass_200"
 
   restrictions {
@@ -57,6 +58,5 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
     cloudfront_default_certificate = false
     ssl_support_method = "sni-only"
     acm_certificate_arn = aws_acm_certificate.web_certificate.arn
-    
   }
 }

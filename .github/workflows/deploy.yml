@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
           run:
-            working-directory: aws_infra
+            working-directory: serverless_infrastructure
         steps: 
           - name: github checkout code
             uses: actions/checkout@v4
@@ -63,6 +63,9 @@ jobs:
           - name: build project 
             run: npm run build
 
+          - name: delete static files
+            run: aws s3 rm s3://${{ secrets.AWS_S3_BUCKET_NAME }} --recursive
+
             # upload static content from the dist folder to S3 bucket
           - name: upload dist folder to S3
-            run: aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete 
+            run: aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET_NAME }}

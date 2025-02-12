@@ -16,7 +16,7 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
             run:
-                working-directory: aws_infra
+                working-directory: serverless_infrastructure
 
         steps:
             - name: Checkout Code

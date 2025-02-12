@@ -1,3 +1,12 @@
+# data "aws_ssm_parameter" "origin_bucket" {
+#   name = "/serverless-portfolio/origin_bucket"
+# }
+# data "aws_ssm_parameter" "redirected_bucket" {
+#   name = "/serverless-portfolio/redirected_bucket"
+# }
+
+
+
 variable "redirect_bucket_name" {
   default = "www.lamodata.com"
   description = "this is the name of the bucket"
