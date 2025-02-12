@@ -1,11 +1,11 @@
 
 #this is the redirected bucket
 resource "aws_s3_bucket" "redirect_bucket" {
-  bucket = "${var.redirect_bucket_name}"
+  bucket = var.redirect_bucket_name
 }
 #this is the bucket with origin 
 resource "aws_s3_bucket" "origin_bucket" {
-  bucket = "${var.origin_bucket_name}"
+  bucket = var.origin_bucket_name
 }
 
 
@@ -46,12 +46,12 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "AllowCloudFrontAccess"
+        Sid       = "AllowCloudFrontServicePrincipalReadOnly"
         Effect    = "Allow"
         Principal = {
           Service = "cloudfront.amazonaws.com"
-        }
-        Action    = "s3:GetObject"
+        } 
+        Action    = "s3:*"
         Resource  = "${aws_s3_bucket.redirect_bucket.arn}/*"
         Condition = {
           StringEquals = {
@@ -80,13 +80,6 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
 
 
 
-resource "aws_s3_bucket_website_configuration" "redirect_bucket_static_web_config" {
-  bucket = aws_s3_bucket.redirect_bucket.id
-
-  index_document {
-    suffix = "index.html"
-  }
-}
 resource "aws_s3_bucket_website_configuration" "origin_bucket_static_web_config" {
   bucket = aws_s3_bucket.origin_bucket.id
 

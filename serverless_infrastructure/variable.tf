@@ -1,3 +1,5 @@
+
+
 variable "redirect_bucket_name" {
   default = "www.lamodata.com"
   description = "this is the name of the bucket"
