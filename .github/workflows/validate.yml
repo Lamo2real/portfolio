@@ -1,0 +1,44 @@
+
+
+name: Terraform validation CI
+
+
+on:
+    push:
+        branches:
+            - infra_dev
+    pull_request:
+      branches:
+        - infra_dev
+
+jobs: 
+    terraform:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: aws_infra
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: setup terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                terraform_version: 1.9.5
+                
+            - name: terraform init to install required provider (hashicorp/aws)
+              run: terraform init
+
+            - name: Terraform formating
+              run: terraform fmt 
+
+              #very similar to linting in py
+            - name: validate tf syntax
+              run: terraform validate
+
+            - name: check the infra in json format
+              run: terraform plan -out=tfplan
+              env:
+                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
