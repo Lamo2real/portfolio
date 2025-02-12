@@ -1,6 +1,4 @@
 
-#these are the two s3 buckets
-
 #this is the redirected bucket
 resource "aws_s3_bucket" "redirect_bucket" {
   bucket = "${var.redirect_bucket_name}"
@@ -12,7 +10,7 @@ resource "aws_s3_bucket" "origin_bucket" {
 
 
 
-
+#website configuration
 resource "aws_s3_bucket_public_access_block" "redirect_bucket_pab" {
   bucket = aws_s3_bucket.redirect_bucket.id
 
@@ -35,6 +33,9 @@ resource "aws_s3_bucket_public_access_block" "origin_bucket_pab" {
 
 
 
+data "aws_ssm_parameter" "admin" {
+  name = "/serverless-portfolio/aws_account_id"
+}
 
 
 
@@ -44,31 +45,35 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-        {
-            Sid = "GetPermissionToAll"
-            Effect = "Allow"
-            Principal = "*"
-            Action = "s3:GetObject"
-            Resource = "${aws_s3_bucket.redirect_bucket.arn}/*"
-
+      {
+        Sid       = "AllowCloudFrontAccess"
+        Effect    = "Allow"
+        Principal = {
+          Service = "cloudfront.amazonaws.com"
         }
-        # ,
-        # {
-        #     Sid = "AllowAdminAccess"
-        #     Effect = "Allow"
-        #     Principal = "*"
-        #     Action = "s3:*"
-        #     Resource = [
-        #         "${aws_s3_bucket.redirect_bucket.arn}/*",
-        #         "${aws_s3_bucket.redirect_bucket.arn}"
-        #     ]
-        # }
+        Action    = "s3:GetObject"
+        Resource  = "${aws_s3_bucket.redirect_bucket.arn}/*"
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = "${aws_cloudfront_distribution.lamodata_cloudfront_dist.arn}"
+          }
+        }
+      },
+      {
+        Sid       = "AllowAdminAccess"
+        Effect    = "Allow"
+        Principal = {
+          AWS = "${data.aws_ssm_parameter.admin.value}"
+        }
+        Action    = "s3:*"
+        Resource  = [
+          "${aws_s3_bucket.redirect_bucket.arn}/*",
+          "${aws_s3_bucket.redirect_bucket.arn}"
+        ]
+      }
     ]
   })
 }
-
-
-
 
 
 
@@ -87,6 +92,6 @@ resource "aws_s3_bucket_website_configuration" "origin_bucket_static_web_config"
 
   redirect_all_requests_to {
     host_name = var.redirect_bucket_name
-    protocol = "http"
+    protocol = "https"
   }
 }
