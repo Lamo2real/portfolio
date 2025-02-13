@@ -1,9 +1,9 @@
 resource "aws_acm_certificate" "web_certificate" {
   provider          = aws.acm_region
-  domain_name       = var.origin_bucket_name
+  domain_name       = var.short_domain_name
   validation_method = "DNS"
 
-  subject_alternative_names = [var.origin_bucket_name, var.redirect_bucket_name]
+  subject_alternative_names = [var.short_domain_name, var.redirect_bucket_name]
   key_algorithm             = "RSA_2048"
 
   lifecycle {

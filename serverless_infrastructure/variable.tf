@@ -5,7 +5,7 @@ variable "redirect_bucket_name" {
   description = "this is the name of the bucket"
   type        = string
 }
-variable "origin_bucket_name" {
+variable "short_domain_name" {
   default     = "lamodata.com"
   description = "this is the name of the bucket"
   type        = string
