@@ -22,7 +22,7 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
 
-  aliases = [var.redirect_bucket_name, var.origin_bucket_name]
+  aliases = [var.redirect_bucket_name, var.short_domain_name]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
