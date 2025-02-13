@@ -70,6 +70,22 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
           "${aws_s3_bucket.redirect_bucket.arn}/*",
           "${aws_s3_bucket.redirect_bucket.arn}"
         ]
+      },
+      {
+        Sid    = "DenyAllExceptAdminAndCloudFront"
+        Effect = "Deny"
+        Principal = "*"
+        Action = "s3:*"
+        Resource = [
+          "${aws_s3_bucket.redirect_bucket.arn}/*",
+          "${aws_s3_bucket.redirect_bucket.arn}"
+        ]
+        Condition = {
+          ArnNotEquals = {
+            "aws:PrincipalArn" = "${data.aws_ssm_parameter.admin.value}"
+            "aws:SourceArn"     = "${aws_cloudfront_distribution.lamodata_cloudfront_dist.arn}"
+          }
+        }
       }
     ]
   })

@@ -11,7 +11,7 @@ export default function Home() {
     <div className="page-container">
       <div id="hello">
         <h1 className='page-title'>Hello!/こんにちは!</h1>
-        hope your are doing well
+        This version is limited to a 2560×1440 resolution.
       </div>
 
       <section className="all-front-page-info">
