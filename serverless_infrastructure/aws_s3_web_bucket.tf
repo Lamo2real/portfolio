@@ -92,3 +92,55 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
 }
 
 
+resource "aws_s3_bucket_policy" "origin_bucket_policy" {
+  bucket = aws_s3_bucket.origin_bucket.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "AllowCloudFrontServicePrincipalReadOnly"
+        Effect = "Allow"
+        Principal = {
+          Service = "cloudfront.amazonaws.com"
+        }
+        Action   = "s3:*"
+        Resource = "${aws_s3_bucket.origin_bucket.arn}/*"
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = "${aws_cloudfront_distribution.lamodata_cloudfront_dist.arn}"
+          }
+        }
+      },
+      {
+        Sid    = "AllowAdminAccess"
+        Effect = "Allow"
+        Principal = {
+          AWS = "${data.aws_ssm_parameter.admin.value}"
+        }
+        Action = "s3:*"
+        Resource = [
+          "${aws_s3_bucket.origin_bucket.arn}/*",
+          "${aws_s3_bucket.origin_bucket.arn}"
+        ]
+      },
+      {
+        Sid       = "DenyAllExceptAdminAndCloudFront"
+        Effect    = "Deny"
+        Principal = "*"
+        Action    = "s3:*"
+        Resource = [
+          "${aws_s3_bucket.origin_bucket.arn}/*",
+          "${aws_s3_bucket.origin_bucket.arn}"
+        ]
+        Condition = {
+          ArnNotEquals = {
+            "aws:PrincipalArn" = "${data.aws_ssm_parameter.admin.value}"
+            "aws:SourceArn"    = "${aws_cloudfront_distribution.lamodata_cloudfront_dist.arn}"
+          }
+        }
+      }
+    ]
+  })
+}
+
