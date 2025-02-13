@@ -1,10 +1,10 @@
 resource "aws_acm_certificate" "web_certificate" {
-  provider = aws.acm_region
+  provider          = aws.acm_region
   domain_name       = var.origin_bucket_name
   validation_method = "DNS"
-  
-  subject_alternative_names = [ var.origin_bucket_name, var.redirect_bucket_name ]
-  key_algorithm = "RSA_2048"
+
+  subject_alternative_names = [var.origin_bucket_name, var.redirect_bucket_name]
+  key_algorithm             = "RSA_2048"
 
   lifecycle {
     create_before_destroy = true
@@ -34,7 +34,7 @@ resource "aws_route53_record" "acm_validation_process" {
 }
 
 resource "aws_acm_certificate_validation" "validation_loop" {
-  provider = aws.acm_region
+  provider                = aws.acm_region
   certificate_arn         = aws_acm_certificate.web_certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.acm_validation_process : record.fqdn]
 }

@@ -46,13 +46,13 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "AllowCloudFrontServicePrincipalReadOnly"
-        Effect    = "Allow"
+        Sid    = "AllowCloudFrontServicePrincipalReadOnly"
+        Effect = "Allow"
         Principal = {
           Service = "cloudfront.amazonaws.com"
-        } 
-        Action    = "s3:*"
-        Resource  = "${aws_s3_bucket.redirect_bucket.arn}/*"
+        }
+        Action   = "s3:*"
+        Resource = "${aws_s3_bucket.redirect_bucket.arn}/*"
         Condition = {
           StringEquals = {
             "AWS:SourceArn" = "${aws_cloudfront_distribution.lamodata_cloudfront_dist.arn}"
@@ -60,22 +60,22 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
         }
       },
       {
-        Sid       = "AllowAdminAccess"
-        Effect    = "Allow"
+        Sid    = "AllowAdminAccess"
+        Effect = "Allow"
         Principal = {
           AWS = "${data.aws_ssm_parameter.admin.value}"
         }
-        Action    = "s3:*"
-        Resource  = [
+        Action = "s3:*"
+        Resource = [
           "${aws_s3_bucket.redirect_bucket.arn}/*",
           "${aws_s3_bucket.redirect_bucket.arn}"
         ]
       },
       {
-        Sid    = "DenyAllExceptAdminAndCloudFront"
-        Effect = "Deny"
+        Sid       = "DenyAllExceptAdminAndCloudFront"
+        Effect    = "Deny"
         Principal = "*"
-        Action = "s3:*"
+        Action    = "s3:*"
         Resource = [
           "${aws_s3_bucket.redirect_bucket.arn}/*",
           "${aws_s3_bucket.redirect_bucket.arn}"
@@ -83,7 +83,7 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
         Condition = {
           ArnNotEquals = {
             "aws:PrincipalArn" = "${data.aws_ssm_parameter.admin.value}"
-            "aws:SourceArn"     = "${aws_cloudfront_distribution.lamodata_cloudfront_dist.arn}"
+            "aws:SourceArn"    = "${aws_cloudfront_distribution.lamodata_cloudfront_dist.arn}"
           }
         }
       }
@@ -92,15 +92,3 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
 }
 
 
-
-
-
-
-resource "aws_s3_bucket_website_configuration" "origin_bucket_static_web_config" {
-  bucket = aws_s3_bucket.origin_bucket.id
-
-  redirect_all_requests_to {
-    host_name = var.redirect_bucket_name
-    protocol = "https"
-  }
-}
