@@ -4,11 +4,11 @@ locals {
 }
 
 resource "aws_cloudfront_origin_access_control" "oac" {
-  name = "my_oac"
-  description = "restrict s3 access to cloudfront"
+  name                              = "my_oac"
+  description                       = "restrict s3 access to cloudfront"
   origin_access_control_origin_type = "s3"
-  signing_behavior = "always"
-  signing_protocol = "sigv4"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
 
 resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
@@ -22,10 +22,10 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
 
-  aliases = [ var.redirect_bucket_name, var.origin_bucket_name ]
+  aliases = [var.redirect_bucket_name, var.origin_bucket_name]
 
   default_cache_behavior {
-    allowed_methods  = [ "GET", "HEAD"]
+    allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = local.s3_origin_id
 
@@ -53,10 +53,10 @@ resource "aws_cloudfront_distribution" "lamodata_cloudfront_dist" {
       locations        = []
     }
   }
-  
+
   viewer_certificate {
     cloudfront_default_certificate = false
-    ssl_support_method = "sni-only"
-    acm_certificate_arn = aws_acm_certificate.web_certificate.arn
+    ssl_support_method             = "sni-only"
+    acm_certificate_arn            = aws_acm_certificate.web_certificate.arn
   }
 }
