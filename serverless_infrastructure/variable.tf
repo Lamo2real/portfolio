@@ -10,7 +10,7 @@ variable "short_domain_name" {
   description = "this is the name of the bucket"
   type        = string
 }
-variable "domain_name" {
+variable "domain_name" { #i know, redundant but scalable
   default     = "lamodata.com"
   description = "this is also the domain name of my route 53 domain"
   type        = string

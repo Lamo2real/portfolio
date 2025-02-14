@@ -7,7 +7,7 @@ on:
             - main
 
 jobs:
-    terraform-apply:
+    terraform-check:
         runs-on: ubuntu-latest
         defaults:
           run:
@@ -36,7 +36,7 @@ jobs:
 
 
     deploy-static-content:
-        needs: terraform-apply
+        needs: terraform-check
         runs-on: ubuntu-latest
 
         steps:

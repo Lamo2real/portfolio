@@ -36,7 +36,7 @@ resource "aws_s3_bucket_policy" "redirect_bucket_policy" {
         Principal = {
           Service = "cloudfront.amazonaws.com"
         }
-        Action   = "s3:*"
+        Action   = "s3:GetObject"
         Resource = "${aws_s3_bucket.redirect_bucket.arn}/*"
         Condition = {
           StringEquals = {
