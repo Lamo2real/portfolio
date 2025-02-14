@@ -1,1 +1,1 @@
-![solution architecture]()
+![solution architecture](https://github.com/Lamo2real/portfolio/blob/main/src/assets/serverless_portfolio.png?raw=true)
