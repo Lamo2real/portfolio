@@ -1,117 +1,117 @@
-/* General Styles */
-.contact-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
-  background: rgba(8, 8, 24, 0.9);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+/* General Layout */
+.contact-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  background: #0a0a1a;
 }
 
-.page-title {
-  font-size: .5rem;
+.contact-title {
+  font-size: 2.5rem;
   color: #00ffff;
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-/* Contact Info */
-.contact-info {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+/* Contact Container */
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
 }
 
-.contact-item {
-  background: rgba(20, 20, 50, 0.8);
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-  text-align: left;
+/* Contact Card */
+.contact-card {
+  background: rgba(15, 15, 35, 0.95);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.contact-item h3 {
-  color: #fff;
-  font-size: 1.2rem;
+.contact-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 255, 255, 0.5);
 }
 
-.icon {
-  margin-right: 8px;
+.contact-icon {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.contact-card h3 {
+  color: #00ffff;
+  font-size: 1.3rem;
 }
 
 .contact-link {
-  display: block;
-  color: #00ffff;
+  display: inline-block;
+  color: #38bdf8;
   font-size: 1rem;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
+  margin-top: 5px;
 }
 
 .contact-link:hover {
-  color: #38bdf8;
+  color: #00ffff;
 }
 
-/* Download Resume Button */
-.download-section {
-  margin-top: 20px;
+/* Resume Section */
+.resume-section {
+  margin-top: 30px;
 }
 
 .download-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 12px 25px;
   font-size: 1rem;
   color: white;
   background-color: #0031d3;
   text-decoration: none;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 6px;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .download-button:hover {
   background-color: #00259d;
+  transform: scale(1.05);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .contact-container {
-    padding: 10px;
-    padding-top: 50px;
-    padding-bottom:0px;
-    width: 100%;
-    height: 100%;
+  .contact-title {
+    font-size: 2rem;
   }
-  /* Contact Info */
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-  .contact-item {
-    padding: 2px;
-  }
-  .contact-link {
-    font-size: 0.5rem;
-  }
-  .contact-info {
-    gap: 9px;
 
-  }
-  .page-title {
-    font-size: 1.6rem;
+  .contact-container {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
   }
 }
 
 @media (max-width: 480px) {
-  .page-title {
+  .contact-title {
     font-size: 1.8rem;
   }
-  .contact-item h3 {
-    font-size: 1rem;
+
+  .contact-card h3 {
+    font-size: 1.2rem;
   }
+
   .contact-link {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .download-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
   }
 }
