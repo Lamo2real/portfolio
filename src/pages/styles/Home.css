@@ -1,80 +1,142 @@
-.all-front-page-info {
-    /* border: solid 2px greenyellow; */
-    padding: 0px;
-    width: 90%;
-}
-
-#hello {
-    height: 20vh;
+/* Home Page Layout */
+.home-section {
+    width: 100%;
+    min-height: 100vh;
     display: flex;
-    /* border: solid 2px greenyellow; */
     flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    background: #0a0a1a;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    color: #00ffff;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  }
+  
+  .header p {
+    color: #ccc;
+    font-size: 1.2rem;
+  }
+  
+  /* Card Grid Layout */
+  .home-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+  
+  /* Individual Cards */
+  .home-card {
+    background: rgba(15, 15, 35, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 250px;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .home-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 255, 255, 0.5);
+  }
+  
+  .home-card-content h3 {
+    color: #00ffff;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  
+  .home-card-content p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin: 5px 0;
+  }
+  
+  /* Card Images */
+  .home-card-image {
+    display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#upper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-left: 150px;
-    /* border: dotted 2px rgb(247, 0, 255); */
-}
-#lamo-at-desc {
-    width: 21vw;
-    opacity: 100%;
-    /* padding-right: 10px; */
-    border-radius: 10px;
-    box-shadow: 8px 16px 12px rgba(0, 0, 0, 0.33);
-    filter: grayscale(0%);
-    border: double 12px rgb(167, 180, 194);
-}
-
-
-#middle {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /* border: dotted 2px rgb(247, 0, 255); */
-}
-
-#lower {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    padding-right: 150px;
-    /* border: dotted 2px rgb(247, 0, 255); */
-}
-
-.front-page-info {
-    /* border: solid 4px rgb(167, 180, 194); */
-    background: linear-gradient(165deg, rgb(0, 76, 255), rgb(119, 189, 255));
-    border-radius: 10px;
-    box-shadow: 4px 6px 10px rgb(1, 0, 27);
-    max-width: 30vw;
-    height: 15vh;
-    padding: 5px;
-    padding-right: 30px;
-    transition: transform 0.3s cubic-bezier(0.8, 0.9, 0.95, 1), box-shadow 0.3s ease;
-    will-change: transform;
-    display: flex; /* Add this */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    text-align: center; /* Ensure text is centered */
-}
-
-.front-page-info:hover {
-    transform: translateY(-8px); /* Increase lift amount */
-    box-shadow: 6px 15px 10px rgba(0, 0, 0, 0.9);
-}
-
-.personal-info-desc {
-    /* border: solid 1px red; */
-    display: flex; /* Add this */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    text-align: center; /* Ensure text is centered */
-}
-#analytics-logo{
-    padding-left: 5px;
-}
+    margin-top: 15px;
+  }
+  
+  .home-card-image img {
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.5));
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .header h1 {
+      font-size: 2rem;
+    }
+  
+    .home-content {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+  
+    .home-card-content h3 {
+      font-size: 1.3rem;
+    }
+  
+    .home-card-content p {
+      font-size: 0.9rem;
+    }
+  
+    .home-card-image img {
+      width: 45px;
+      height: 45px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .home-content {
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
+  
+    .home-card {
+      padding: 15px;
+    }
+  
+    .home-card-image img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header h1 {
+      font-size: 1.8rem;
+    }
+  
+    .home-card-content h3 {
+      font-size: 1.2rem;
+    }
+  
+    .home-card-content p {
+      font-size: 0.85rem;
+    }
+  
+    .home-card-image img {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  

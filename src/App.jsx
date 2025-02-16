@@ -1,65 +1,56 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
-
+import Footer from "./pages/Footer";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Education from "./pages/Education";
 import Contact from "./pages/Contact";
-import './App.css';
-import './pages/styles/Contact.css'
-import './pages/styles/Education.css'
-import './pages/styles/Projects.css'
-import './pages/styles/Home.css'
-
-import github from './assets/github-logo.png'
-import linkedin from './assets/linkedin.png'
-import mail from './assets/mail-logo.png'
-// import tobi from './assets/tobi.png'
+import "./App.css";
 
 function App() {
+  useEffect(() => {
+    // Smooth scrolling for all links
+    const links = document.querySelectorAll("a[href^='#']");
+    links.forEach((link) => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const targetId = this.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 60, // Offset for navbar
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+
+    return () => {
+      links.forEach((link) => {
+        link.removeEventListener("click", () => {});
+      });
+    };
+  }, []);
+
   return (
-    <Router>
+    <div className="app-container">
       <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-
-      </div>
-      <div>
-        <div className="footer-div">
-
-
-        <div className="footer-content">
-          <p>©{new Date().getFullYear()} Ali Kouravand</p>
-          <div className="social-links">
-            <div className="social-link">
-              <a className="social-media-links" href="https://github.com/Lamo2real" target="_blank" rel="noopener noreferrer">
-                <img className="footer-logos" src={github} />GitHub
-              </a>
-            </div>
-            <div className="social-link">
-              <a id="linkedin-text" className="social-media-links" href="https://www.linkedin.com/in/ali-kouravand-a77937267/" target="_blank" rel="noopener noreferrer">
-                <img className="footer-logos" id="linkedin-logo" src={linkedin} />LinkedIn
-              </a>
-            </div>
-            <div className="social-link">
-              <a className="social-media-links" href="https://mail.google.com/mail/?view=cm&fs=1&to=lamochi02@gmail.com">
-                <img className="footer-logos" src={mail} />Email
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* <img src={tobi} width="60"/> */}
-
-      </div>
-      </div>
-
-    </Router>
+      <main className="content-container">
+        <section id="home">
+          <Home />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="education">
+          <Education />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
