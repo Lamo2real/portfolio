@@ -1,38 +1,37 @@
-import { Link } from "react-router-dom";
-import { FiSun, FiMoon } from "react-icons/fi";
-import { useContext, useState } from "react";
-import { ThemeContext } from "../context/ThemeContext.jsx";
-import styles from "./Navbar.module.css";
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 import kakashi from "../assets/kakashi.png";
+import styles from "../components/Navbar.module.css"; 
 
-const Navbar = () => {
-  const { isDark, toggleTheme } = useContext(ThemeContext);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className={styles.navbar}>
-      <div className={styles.logo}>
-        <img src={kakashi} alt="kakashi logo" width="90" />
-        <span>Ali Kouravand (Lámo)</span>
+      <div className={styles.navContainer}>
+        
+        {/* Logo */}
+        <div className={styles.logo}>
+          <img src={kakashi} alt="Logo" />
+          <span>My Portfolio</span>
+        </div>
+
+        {/* Desktop Navigation */}
+        <ul className={`${styles.navLinks} ${isOpen ? styles.showMenu : ""}`}>
+          {["Home", "Projects", "Education", "Contact"].map((item) => (
+            <li key={item}>
+              <a href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)}>
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile Menu Button */}
+        <button className={styles.menuIcon} onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <FiX /> : <FiMenu />}
+        </button>
       </div>
-
-      <button 
-        className={`${styles.hamburger} ${isMenuOpen ? styles.active : ""}`}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
-        <div className={styles.hamburgerLine} />
-        <div className={styles.hamburgerLine} />
-        <div className={styles.hamburgerLine} />
-      </button>
-
-      <ul className={`${styles.navLinks} ${isMenuOpen ? styles.active : ""}`}>
-        <li><Link to="/" className={styles.link}>Home</Link></li>
-        <li><Link to="/projects" className={styles.link}>Projects</Link></li>
-        <li><Link to="/education" className={styles.link}>Education</Link></li>
-        <li><Link to="/contact" className={styles.link}>Contact</Link></li>
-      </ul>
     </nav>
   );
-};
-
-export default Navbar;
+}
