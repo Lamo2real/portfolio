@@ -9,7 +9,7 @@ import "./App.css";
 
 function App() {
   useEffect(() => {
-    // Smooth scrolling for all links
+    // Smooth scrolling for all links 
     const links = document.querySelectorAll("a[href^='#']");
     links.forEach((link) => {
       link.addEventListener("click", function (event) {
