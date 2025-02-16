@@ -1,143 +1,81 @@
-
-import saa from '../assets/saa_certificate.png'
-import clf from '../assets/cloud_practitioner.png'
-import cpp from '../assets/cpp-logo.png'
-import py from '../assets/python-logo.png'
-import swift from '../assets/swift-logo.png'
-import android from '../assets/android-logo.png'
-import aws from '../assets/aws-logo.png'
+import saa from '../assets/saa_certificate.png';
+import clf from '../assets/cloud_practitioner.png';
+import cpp from '../assets/cpp-logo.png';
+import py from '../assets/python-logo.png';
+import swift from '../assets/swift-logo.png';
+import android from '../assets/android-logo.png';
+import aws from '../assets/aws-logo.png';
+import '..//pages/styles/Education.css';
 
 export default function Education() {
   return (
-    <>
-      <section id='edu-cert'>
-        <h1 className='page-title'>Education</h1>
+    <div className="education-container">
+      <h1 className='page-title'>Education</h1>
+
+      <section className="education-section">
+        <div className="education-item">
+          <h2>Software Engineering at Jönköping University</h2>
+          <p className='education-desc'>
+            During my studies, I built a strong foundation in software engineering with courses in:
+          </p>
+          <ul className='education-list'>
+            <li>Data Structures & Algorithms (C++)</li>
+            <li>Object-Oriented Programming (C++)</li>
+            <li>Mobile App Development (Swift & Kotlin)</li>
+            <li>Network Programming (Python)</li>
+            <li>Database Systems (SQL, Data Modeling)</li>
+            <li>DevOps & CI/CD with GitHub Actions</li>
+          </ul>
+          <div className='logo-container'>
+            <img className='logos' src={cpp} alt='C++' />
+            <img className='logos' src={py} alt='Python' />
+            <img className='logos' src={swift} alt='Swift' />
+            <img className='logos' src={android} alt='Android' />
+            <img className='logos' src={aws} alt='AWS' />
+          </div>
+          <h3>Capstone Project: FlexiCharge</h3>
+          <p className='education-desc'>
+            Collaborated on FlexiCharge, a project with Knowit, involving 80 students across multiple teams.
+            My role as Solutions Architect included designing and implementing AWS cloud infrastructure.
+          </p>
+        </div>
       </section>
 
-
-      <div className="aws-section">
-
-        <div className="aws-inner-section">
-          <div className="education-item">
-            <h2>Software Engineering at University of Engineering</h2>
-            <h2>Jönköping University</h2>
-            <div id='school-desc-font'>
-              <p >
-                During my studies at Jönköping University, I gained a strong foundation in software engineering through a comprehensive curriculum that included:
-                <section id='school-subject-section'>
-                  <ul >
-                    <li className='school-subject'>Data Structures & Algorithms (C++)</li>
-                    <li className='school-subject'>Object-Oriented Programming (C++)</li>
-                    <li className='school-subject'>Mobile Application Development (Swift for iOS and <br />Kotlin for Android).
-                      I Built a weather app and a <br />macro-tracking application using Swift <br />
-                      and a weather app and a macro-tracking application using Swift.</li>
-                    <li className='school-subject'>Developed a Tic-Tac-Toe game using Kotlin for Android.</li>
-                    <li className='school-subject'>Network Programming (Python)</li>
-                    <li className='school-subject'>Database Systems (MSSQL, Data Modeling, and SQL Databases)</li>
-                    <li className='school-subject'>DevOps Practices/Automated CI/CD pipelines using GitHub Actions.</li>
-
-                  </ul>
-                  <section className='logo-container'>
-                  <img className='logos' src={cpp} />
-                  <img className='logos' src={py} />
-                  <img className='logos' src={swift} />
-                  <img className='logos' src={android} />
-                  <img className='logos' src={aws} />
-                  </section>
-
-                </section>
-                Capstone Project: FlexiCharge <br />
-                <p className='full-desc'>As part of a large-scale team project, I contributed to FlexiCharge, a solution designed to locate available charging stations for electric vehicles.
-                This project was conducted in collaboration with Knowit, a leading Swedish IT consultancy.</p>
-                <br />
-                Team Structure: <br />
-                <p className='full-desc'>
-                The project involved 80 students divided into specialized teams, including Android, iOS, Cross-Platform, Web Development, Database, OCPP (Open Charge Point Protocol), Business Orchestrator, Charging System (hardware deployment), HTTP Communication, and AWS.
-                My Role: I served as the Solutions Architect, responsible for designing and implementing the cloud infrastructure on AWS.
-                Designed the solution architecture based on business requirements and KPIs.
-                Leveraged Terraform for infrastructure-as-code to automate deployments.
-                Built a secure and scalable cloud environment, including:
-                Internet Gateway with appropriate security groups, subnets, NACLs, and route tables.
-                Amazon RDS for MySQL to manage the database layer.
-                Amazon S3 for hosting static website content.
-                Ensured operational excellence, adhering to the AWS Well-Architected Framework.
-                Collaborated with the HTTP Communication team to facilitate seamless integration between all sub-teams.
-                This experience not only honed my technical skills but also strengthened my ability to lead cross-functional teams, manage complex projects, and deliver scalable solutions in a collaborative environment.
-                </p>
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        <div className="aws-inner-section">
+      <section className="certifications-section">
         <h1>AWS Certifications</h1>
-          <div className="aws-inner-item">
-            
-            <div className="certification">
-              <img
-                className='certificate-image'
-                src={clf}
-                alt="cloud practitioner Certificate"
-
-              />
-              <div><h4 className='crt-desc'>Cloud Practitioner - (CLF-C02)</h4>
-                <p>Validation Number:</p>
-                <div className="code-block">
-                  <div className="code-content">
-                    d3ddb8af11cc410eb1f52c234406731d
-                    <button
-                      className="copy-button"
-                      onClick={() => navigator.clipboard.writeText('d3ddb8af11cc410eb1f52c234406731d')}
-                    >
-                      Copy Code
-                    </button>
-                  </div>
-                </div>
-              </div>
+        <div className="certification-container">
+          <div className="certification">
+            <img className='certificate-image' src={clf} alt='AWS Cloud Practitioner' />
+            <div>
+              <h4>Cloud Practitioner - (CLF-C02)</h4>
+              <p>Validation Number: d3ddb8af11cc410eb1f52c234406731d</p>
+              <button
+                className="copy-button"
+                onClick={() => navigator.clipboard.writeText('d3ddb8af11cc410eb1f52c234406731d')}
+              >
+                Copy Code
+              </button>
             </div>
           </div>
 
-
-          <div className="aws-inner-item">
-
-            <div className="certification">
-
-
-              <img
-              className='certificate-image'
-                src={saa}
-                alt="AWS Solutions Architect Associate Certificate"
-
-              />
-
-              <div>
-                <h4 className='crt-desc'>Solutions Architect Associate - (SAA-C03)</h4>
-                <p>Validation Number:</p>
-                <div className="code-block">
-                  <div className="code-content">
-                    4a5b9927dec6436abdeab7ea8634b7d7
-                    <button
-                      className="copy-button"
-                      onClick={() => navigator.clipboard.writeText('4a5b9927dec6436abdeab7ea8634b7d7')}
-                    >
-                      Copy Code
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <div className="certification">
+            <img className='certificate-image' src={saa} alt='AWS Solutions Architect' />
+            <div>
+              <h4>Solutions Architect Associate - (SAA-C03)</h4>
+              <p>Validation Number: 4a5b9927dec6436abdeab7ea8634b7d7</p>
+              <button
+                className="copy-button"
+                onClick={() => navigator.clipboard.writeText('4a5b9927dec6436abdeab7ea8634b7d7')}
+              >
+                Copy Code
+              </button>
             </div>
           </div>
-          <a href="https://cp.certmetrics.com/amazon/en/public/verify/credential"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button">
-            Click here!
-          </a>
-          <p id='verify-code-desc'>Copy the Validation Number and verify by clicking the button</p>
-
         </div>
-      </div>
-    </>
+        <a href="https://cp.certmetrics.com/amazon/en/public/verify/credential" target="_blank" rel="noopener noreferrer" className="verify-button">
+          Verify Certifications
+        </a>
+      </section>
+    </div>
   );
 }
